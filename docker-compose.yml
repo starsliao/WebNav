@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   webnav:
-    image: starsliao/webnav:v1
+    image: starsliao/webnav
     container_name: webnav
     restart: always
     ports:
