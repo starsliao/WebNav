@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  webnav:
+    image: starsliao/webnav:v1
+    container_name: webnav
+    restart: always
+    ports:
+      - 8000:8000
+    network_mode: "host"
+    volumes:
+      - /usr/share/zoneinfo/PRC:/etc/localtime
+      - /data/webnav/db.sqlite3:/webnav/db.sqlite3
+    healthcheck:
+      test: netstat -nlt | grep 8000 || exit 1
+      interval: 1m
+      timeout: 5s
+      retries: 3
+      start_period: 20s
